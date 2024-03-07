@@ -94,7 +94,7 @@ class FOBucket:
         """
         prefix = field_id.replace("_", "/")
         field_files = self.list_files(prefix, return_key=True)
-        events_file = os.path.join(prefix, "events.json")
+        events_file = f"{prefix}/events.json"
         if events_file in field_files:
             object = self.s3.Object(FOBucket.FO_BUCKET_NAME, events_file)
             file_content = object.get()["Body"].read().decode("utf-8")
